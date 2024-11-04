@@ -1,0 +1,19 @@
+I downloaded BLAST+ for its usability with a command line, no restrictions on size, and the fact we are dealing with protein sequences (not DNA/RNA or other). Version 2.16.0+ was the most recently updated version I could access from the NCBI site.
+
+I decided to use the matrix BLOSUM80 due to the fact that human and mouse proteins are highly conserved - that is, they are very related. A quick google search supports that the protein-coding sequences (and therefore, the proteins they encode) are 85% or more related. Therefore, BLOSUM80, a matrix built from blocks with less than 80% similarity, should be more suitable than BLOSUM62 or BLOSUM45.
+
+Parameters:
+
+cmd: using blastp for protein analysis
+
+query: using a temporary fasta file containing one seqRecord at a time
+
+db: using the database I created called "mouse" which contains the info from mouse.fa
+
+evalue: specifies we only want matches with max e-value 0.001 (high-quality alignment, the probability of the alignment occurring by chance is no more than 0.001)
+
+matrix: using BLOSUM80 due to high similarity between human and mouse proteins; very conserved
+
+out: writing to an xml file so that I can use NCBIXML.parse to parse the BLAST results
+
+outfmt: using format #5 because this is for xml files
